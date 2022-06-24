@@ -1,0 +1,154 @@
+<div class="app-wrapper">
+  <div class="app-content pt-3 p-md-3 p-lg-4">
+    <div class="container-xl">
+      <div class="row g-3 mb-4 align-items-center justify-content-between">
+        <div class="col-auto">
+          <h1 class="app-page-title mb-0">Credit debit memo</h1>
+        </div>
+        <div class="col-auto">
+          <div class="page-utilities">
+            <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+              <div class="col-auto">
+                <form class="table-search-form row gx-1 align-items-center">
+                  <div class="col-auto">
+                    <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search" [(ngModel)]="term">
+                  </div>
+                </form>
+
+              </div><!--//col-->
+<!--              <div class="col-auto">-->
+
+<!--                <select class="form-select w-auto" >-->
+<!--                  <option selected value="option-1">All</option>-->
+<!--                  <option value="option-2">This week</option>-->
+<!--                  <option value="option-3">This month</option>-->
+<!--                  <option value="option-4">Last 3 months</option>-->
+<!--                </select>-->
+
+<!--              </div>-->
+            </div><!--//row-->
+          </div><!--//table-utilities-->
+        </div><!--//col-auto-->
+      </div><!--//row-->
+
+      <mat-tab-group mat-align-tabs="left">
+        <mat-tab label="Credit Memo">
+          <div class="tab-content" id="orders-table-tab-content">
+            <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+              <div class="app-card app-card-orders-table shadow-sm mb-5">
+                <div class="app-card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-hover mb-0 text-left ">
+                      <thead class="table-dark">
+                      <tr>
+                        <th class="cell cel">Document no.</th>
+                        <!--                        <th class="cell cel">Sold to party</th>-->
+                        <!--                        <th class="cell cel">Ship to party</th>-->
+                        <th class="cell cel">Comp.code</th>
+                        <th class="cell cel">Amt.local curr</th>
+                        <!--                        <th class="cell cel">Last date change</th>-->
+                        <th class="cell cel">Fiscal year</th>
+                        <th class="cell cel">Gen.ledger acct.</th>
+                        <th class="cell cel">Account type</th>
+                        <th class="cell cel">Amt.update in G.L.</th>
+                        <th class="cell cel">Curr.in G.L</th>
+                        <th class="cell cel">Amt.in doc.curr</th>
+                        <th class="cell cel">Due date cal.</th>
+<!--                        <th class="cell cel">Delivery date/time</th>-->
+<!--                        <th class="cell cel">Transport plan date/time</th>-->
+<!--                        <th class="cell cel">Goods movement date/time</th>-->
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let user of list_c | filter:term">
+                        <td class="cell">{{ user.BELNR }}</td>
+                        <!--                        <td class="cell"><span class="truncate">{{user.SHORT_TEXT }}</span></td>-->
+                        <!--                        <td class="cell"><span class="cell-data">{{user.CREATION_DATE}}</span><span class="note">{{user.CREATION_TIME}}</span></td>-->
+                        <!--                        <td class="cell">{{ parseInt(user.KUNAG) }}</td>-->
+                        <!--                        <td class="cell">{{ parseInt(user.KUNNR) }}</td>-->
+                        <td class="cell">{{ user.BUKRS }}</td>
+                        <td class="cell">{{ user.DMBTR }}</td>
+                        <!--                        <td class="cell">{{ user.AEDAT }}</td>-->
+                        <td class="cell">{{ user.GJAHR }}</td>
+                        <td class="cell">{{ user.HKONT }}</td>
+                        <td class="cell">{{ user.KOART }}</td>
+                        <td class="cell">{{ user.PSWBT }}</td>
+                        <td class="cell">{{ user.PSWSL }}</td>
+                        <td class="cell">{{ user.WRBTR }}</td>
+                        <td class="cell">{{ user.ZFBDT }}</td>
+<!--                        <td class="cell"><span class="cell-data">{{user.ERDAT}}</span><span class="note">{{user.ERZET}}</span></td>-->
+                        <!--                        <td class="cell">{{ user.VALID_TO }}</td>-->
+                        <!--                        <td class="cell"><span [ngClass]="{'bg-success':isCompleted(user.DOC_STATUS)}" class="badge">{{ user.DOC_STATUS }}</span></td>-->
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div><!--//table-responsive-->
+                </div><!--//app-card-body-->
+              </div><!--//app-card-->
+            </div><!--//tab-pane-->
+          </div>
+
+        </mat-tab>
+        <mat-tab label="Debit Memo">
+
+          <div class="tab-content" id="orders-table-tab-content">
+            <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+              <div class="app-card app-card-orders-table shadow-sm mb-5">
+                <div class="app-card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-hover mb-0 text-left ">
+                      <thead class="table-dark">
+                      <tr>
+                        <th class="cell cel">Document no.</th>
+                        <!--                        <th class="cell cel">Sold to party</th>-->
+                        <!--                        <th class="cell cel">Ship to party</th>-->
+                        <th class="cell cel">Comp.code</th>
+                        <th class="cell cel">Amt.local curr</th>
+                        <!--                        <th class="cell cel">Last date change</th>-->
+                        <th class="cell cel">Fiscal year</th>
+                        <th class="cell cel">Gen.ledger acct.</th>
+                        <th class="cell cel">Account type</th>
+                        <th class="cell cel">Amt.update in G.L.</th>
+                        <th class="cell cel">Curr.in G.L</th>
+                        <th class="cell cel">Amt.in doc.curr</th>
+                        <th class="cell cel">Due date cal.</th>
+                        <!--                        <th class="cell cel">Delivery date/time</th>-->
+                        <!--                        <th class="cell cel">Transport plan date/time</th>-->
+                        <!--                        <th class="cell cel">Goods movement date/time</th>-->
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let user of list_d | filter:term">
+                        <td class="cell">{{ user.BELNR }}</td>
+                        <!--                        <td class="cell"><span class="truncate">{{user.SHORT_TEXT }}</span></td>-->
+                        <!--                        <td class="cell"><span class="cell-data">{{user.CREATION_DATE}}</span><span class="note">{{user.CREATION_TIME}}</span></td>-->
+                        <!--                        <td class="cell">{{ parseInt(user.KUNAG) }}</td>-->
+                        <!--                        <td class="cell">{{ parseInt(user.KUNNR) }}</td>-->
+                        <td class="cell">{{ user.BUKRS }}</td>
+                        <td class="cell">{{ user.DMBTR }}</td>
+                        <!--                        <td class="cell">{{ user.AEDAT }}</td>-->
+                        <td class="cell">{{ user.GJAHR }}</td>
+                        <td class="cell">{{ user.HKONT }}</td>
+                        <td class="cell">{{ user.KOART }}</td>
+                        <td class="cell">{{ user.PSWBT }}</td>
+                        <td class="cell">{{ user.PSWSL }}</td>
+                        <td class="cell">{{ user.WRBTR }}</td>
+                        <td class="cell">{{ user.ZFBDT }}</td>
+                        <!--                        <td class="cell"><span class="cell-data">{{user.ERDAT}}</span><span class="note">{{user.ERZET}}</span></td>-->
+                        <!--                        <td class="cell">{{ user.VALID_TO }}</td>-->
+                        <!--                        <td class="cell"><span [ngClass]="{'bg-success':isCompleted(user.DOC_STATUS)}" class="badge">{{ user.DOC_STATUS }}</span></td>-->
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div><!--//table-responsive-->
+                </div><!--//app-card-body-->
+              </div><!--//app-card-->
+            </div><!--//tab-pane-->
+          </div>
+
+        </mat-tab>
+      </mat-tab-group>
+
+    </div>
+  </div>
+</div>

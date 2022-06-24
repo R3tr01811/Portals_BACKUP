@@ -1,0 +1,103 @@
+<div class="app-wrapper">
+  <div class="app-content pt-3 p-md-3 p-lg-4">
+    <div class="container-xl">
+      <div class="row g-3 mb-4 align-items-center justify-content-between">
+        <div class="col-auto">
+          <h1 class="app-page-title mb-0">Inquiry</h1>
+        </div>
+        <div class="col-auto">
+          <div class="page-utilities">
+            <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+              <div class="col-auto">
+                <form class="table-search-form row gx-1 align-items-center">
+                  <div class="col-auto">
+                    <input type="text" id="search-orders" name="searchorders" class="form-control search-orders"
+                           placeholder="Search" [(ngModel)]="term">
+                  </div>
+<!--                  <div class="col-auto">-->
+<!--                    <button type="submit" class="btn app-btn-secondary">Search</button>-->
+<!--                  </div>-->
+                </form>
+
+              </div><!--//col-->
+<!--              <div class="col-auto">-->
+
+<!--                <select class="form-select w-auto">-->
+<!--                  <option selected value="option-1">All</option>-->
+<!--                  <option value="option-2">This week</option>-->
+<!--                  <option value="option-3">This month</option>-->
+<!--                  <option value="option-4">Last 3 months</option>-->
+<!--                </select>-->
+
+<!--              </div>-->
+            </div><!--//row-->
+          </div><!--//table-utilities-->
+        </div><!--//col-auto-->
+      </div><!--//row-->
+
+
+      <div class="tab-content" id="orders-table-tab-content">
+        <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+          <div class="app-card app-card-orders-table shadow-sm mb-5">
+            <div class="app-card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover mb-0 text-left">
+                  <thead class="table-dark">
+                  <tr>
+                    <th class="cell cel">Document no.</th>
+                    <th class="cell cel">PO No.</th>
+                    <th class="cell cel">Comp.code</th>
+                    <th class="cell cel">Doc.cat.</th>
+                    <th class="cell cel">Doc.type</th>
+                    <th class="cell cel">Doc.curr</th>
+                    <th class="cell cel">Net value</th>
+                    <th class="cell cel">Tax</th>
+                    <th class="cell cel">Created date/time</th>
+                    <th class="cell cel">PO date</th>
+                    <th class="cell cel">Req.delivery date</th>
+                    <th class="cell cel">Mat.avail.date</th>
+                    <th class="cell cel">cancellation date</th>
+<!--                    <th class="cell cel">Proposed date</th>-->
+                    <th class="cell cel">Doc. date</th>
+                    <th class="cell cel">valid to date</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <!--                    <td class="cell">#15341</td>-->
+                    <!--                    <td class="cell"><span class="truncate">Morbi vulputate lacinia neque et sollicitudin</span></td>-->
+                    <!--                    <td class="cell">Raymond Atkins</td>-->
+                    <!--                    <td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>-->
+                    <!--                    <td class="cell"><span class="badge bg-success">Paid</span></td>-->
+                    <!--                    <td class="cell">$678.26</td>-->
+                  </tr>
+                  <tr *ngFor="let user of list | filter:term">
+                    <td class="cell">{{ user.VBELN }}</td>
+                    <td class="cell"><span class="truncate">{{ user.BSTNK }}</span></td>
+<!--                    <td class="cell">{{ user.BSTNK }}</td>-->
+                    <td class="cell">{{ user.BUKRS_VF }}</td>
+                    <td class="cell">{{ user.VBTYP }}</td>
+                    <td class="cell">{{ user.AUART }}</td>
+                    <td class="cell">{{ user.WAERK }}</td>
+                    <td class="cell">{{ user.NETWR }}</td>
+                    <td class="cell">{{ user.TAXK1 }}</td>
+                    <td class="cell"><span class="cell-data">{{user.ERDAT}}</span><span class="note">{{user.ERZET}}</span></td>
+                    <td class="cell"><span class="truncate">{{ user.BSTDK }}</span></td>
+                    <td class="cell">{{ user.VDATU }}</td>
+                    <td class="cell">{{ user.FMBDAT }}</td>
+                    <td class="cell">{{ user.FSH_CANDATE }}</td>
+                    <td class="cell"><span class="truncate">{{ user.AUDAT }}</span></td>
+                    <td class="cell">{{ user.BNDDT }}</td>
+                    <!--                    <td class="cell"><span [ngClass]="{'bg-success':isCompleted(user.DOC_STATUS)}" class="badge">{{ user.DOC_STATUS }}</span></td>-->
+                  </tr>
+                  </tbody>
+                </table>
+              </div><!--//table-responsive-->
+
+            </div><!--//app-card-body-->
+          </div><!--//app-card-->
+        </div><!--//tab-pane-->
+      </div>
+    </div>
+  </div>
+</div>

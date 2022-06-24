@@ -1,0 +1,178 @@
+<div class="app-wrapper">
+  <div class="app-content pt-3 p-md-3 p-lg-4">
+    <div class="container-xl">
+      <div class="row g-3 mb-4 align-items-center justify-content-between">
+        <div class="col-auto">
+          <h1 class="app-page-title mb-0">List of delivery</h1>
+        </div>
+        <div class="col-auto">
+          <div class="page-utilities">
+            <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+              <div class="col-auto">
+                <form class="table-search-form row gx-1 align-items-center">
+                  <div class="col-auto">
+                    <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search" [(ngModel)]="term">
+                  </div>
+
+                </form>
+
+              </div><!--//col-->
+              <div class="col-auto">
+
+<!--                <select class="form-select w-auto" >-->
+<!--                  <option selected value="option-1">All</option>-->
+<!--                  <option value="option-2">This week</option>-->
+<!--                  <option value="option-3">This month</option>-->
+<!--                  <option value="option-4">Last 3 months</option>-->
+<!--                </select>-->
+
+              </div>
+            </div><!--//row-->
+          </div><!--//table-utilities-->
+        </div><!--//col-auto-->
+      </div><!--//row-->
+
+      <mat-tab-group mat-align-tabs="left">
+        <mat-tab label="Header Data">
+          <div class="tab-content" id="orders-table-tab-content">
+            <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+              <div class="app-card app-card-orders-table shadow-sm mb-5">
+                <div class="app-card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-hover mb-0 text-left ">
+                      <thead class="table-dark">
+                      <tr>
+                        <th class="cell cel">Document no.</th>
+<!--                        <th class="cell cel">Sold to party</th>-->
+<!--                        <th class="cell cel">Ship to party</th>-->
+                        <th class="cell cel">Billing date</th>
+                        <th class="cell cel">Document date</th>
+<!--                        <th class="cell cel">Last date change</th>-->
+                        <th class="cell cel">Total weight</th>
+                        <th class="cell cel">Net weight</th>
+                        <th class="cell cel">Weight unit</th>
+                        <th class="cell cel">Doc. cur.</th>
+                        <th class="cell cel">Record created date/time</th>
+                        <th class="cell cel">Pickup date/time</th>
+                        <th class="cell cel">Loading date/time</th>
+                        <th class="cell cel">Delivery date/time</th>
+                        <th class="cell cel">Transport plan date/time</th>
+                        <th class="cell cel">Goods movement date/time</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let user of list_d | filter:term">
+                        <td class="cell">{{ user.VBELN }}</td>
+<!--                        <td class="cell"><span class="truncate">{{user.SHORT_TEXT }}</span></td>-->
+<!--                        <td class="cell"><span class="cell-data">{{user.CREATION_DATE}}</span><span class="note">{{user.CREATION_TIME}}</span></td>-->
+<!--                        <td class="cell">{{ parseInt(user.KUNAG) }}</td>-->
+<!--                        <td class="cell">{{ parseInt(user.KUNNR) }}</td>-->
+                        <td class="cell">{{ user.FKDAT }}</td>
+                        <td class="cell">{{ user.BLDAT }}</td>
+<!--                        <td class="cell">{{ user.AEDAT }}</td>-->
+                        <td class="cell">{{ user.BTGEW }}</td>
+                        <td class="cell">{{ user.NTGEW }}</td>
+                        <td class="cell">{{ user.GEWEI }}</td>
+                        <td class="cell">{{ user.WAERK }}</td>
+                        <td class="cell"><span class="cell-data">{{user.ERDAT}}</span><span class="note">{{user.ERZET}}</span></td>
+                        <td class="cell"><span class="cell-data">{{user.KODAT}}</span><span class="note">{{user.KOUHR}}</span></td>
+                        <td class="cell"><span class="cell-data">{{user.LDDAT}}</span><span class="note">{{user.LDUHR}}</span></td>
+                        <td class="cell"><span class="cell-data">{{user.LFDAT}}</span><span class="note">{{user.LFUHR}}</span></td>
+                        <td class="cell"><span class="cell-data">{{user.TDDAT}}</span><span class="note">{{user.TDUHR}}</span></td>
+                        <td class="cell"><span class="cell-data">{{user.WADAT}}</span><span class="note">{{user.WAUHR}}</span></td>
+
+<!--                        <td class="cell">{{ user.VALID_TO }}</td>-->
+<!--                        <td class="cell"><span [ngClass]="{'bg-success':isCompleted(user.DOC_STATUS)}" class="badge">{{ user.DOC_STATUS }}</span></td>-->
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div><!--//table-responsive-->
+                </div><!--//app-card-body-->
+              </div><!--//app-card-->
+            </div><!--//tab-pane-->
+          </div>
+
+        </mat-tab>
+        <mat-tab label="Item Data">
+
+            <div class="tab-content" id="orders-table-tab-content">
+              <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+                <div class="app-card app-card-orders-table shadow-sm mb-5">
+                  <div class="app-card-body">
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-hover mb-0 text-left ">
+                        <thead class="table-dark">
+                        <tr>
+                          <th class="cell cel">Document no.</th>
+                          <!--                        <th class="cell cel">Sold to party</th>-->
+                          <!--                        <th class="cell cel">Ship to party</th>-->
+                          <th class="cell cel">Material desc.</th>
+                          <th class="cell cel">Material type</th>
+                          <th class="cell cel">Material no.</th>
+                          <!--<th class="cell cel">Last date change</th>-->
+                          <th class="cell cel">Req.type</th>
+                          <th class="cell cel">Req.class</th>
+                          <th class="cell cel">Act.qty.delivered in sales</th>
+                          <th class="cell cel">Act.qty.delivered in stock</th>
+                          <th class="cell cel">Original qty.</th>
+                          <th class="cell cel">Unit of measure</th>
+                          <th class="cell cel">Warehouse no.</th>
+                          <th class="cell cel">Material avail.date/time</th>
+                          <th class="cell cel">Gross weight</th>
+                          <th class="cell cel">Net weight</th>
+                          <th class="cell cel">Mov.type(Inv.mgmt)</th>
+                          <th class="cell cel">Mov.type(Warehouse)</th>
+                          <th class="cell cel">Created date/time</th>
+                          <th class="cell cel">Created by</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let user of list_i">
+                          <td class="cell">{{ user.VBELN }}</td>
+                          <td class="cell"><span class="truncate">{{user.ARKTX }}</span></td>
+                          <!--                        <td class="cell"><span class="cell-data">{{user.CREATION_DATE}}</span><span class="note">{{user.CREATION_TIME}}</span></td>-->
+                          <!--                        <td class="cell">{{ parseInt(user.KUNAG) }}</td>-->
+                          <!--                        <td class="cell">{{ parseInt(user.KUNNR) }}</td>-->
+                          <td class="cell">{{ user.MTART }}</td>
+                          <td class="cell">{{ user.MATNR }}</td>
+                          <!--                        <td class="cell">{{ user.AEDAT }}</td>-->
+                          <td class="cell">{{ user.BDART }}</td>
+                          <td class="cell">{{ user.BEDAR_LF }}</td>
+                          <td class="cell">{{ user.LFIMG }}</td>
+                          <td class="cell">{{ user.LGMNG }}</td>
+                          <td class="cell">{{ user.ORMNG }}</td>
+                          <td class="cell">{{ user.MEINS }}</td>
+                          <td class="cell">{{ user.LGNUM }}</td>
+                          <td class="cell"><span class="cell-data">{{user.MBDAT}}</span><span class="note">{{user.MBUHR}}</span></td>
+
+                          <td class="cell">{{ user.BRGEW }}</td>
+                          <td class="cell">{{ user.NTGEW }}</td>
+                          <td class="cell">{{ user.BWART }}</td>
+                          <td class="cell">{{ user.BWLVS }}</td>
+                          <td class="cell"><span class="cell-data">{{user.ERDAT}}</span><span class="note">{{user.ERZET}}</span></td>
+                          <td class="cell">{{ user.ERNAM }}</td>
+                          <!--                        <td class="cell">{{ user.VALID_TO }}</td>-->
+                          <!--                        <td class="cell"><span [ngClass]="{'bg-success':isCompleted(user.DOC_STATUS)}" class="badge">{{ user.DOC_STATUS }}</span></td>-->
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div><!--//table-responsive-->
+                  </div><!--//app-card-body-->
+                </div><!--//app-card-->
+              </div><!--//tab-pane-->
+            </div>
+
+        </mat-tab>
+      </mat-tab-group>
+
+<!--      <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4">-->
+<!--        <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab" href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">Item data</a>-->
+<!--        <a class="flex-sm-fill text-sm-center nav-link"  id="orders-paid-tab" data-bs-toggle="tab" href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Header data</a>-->
+<!--&lt;!&ndash;        <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Pending</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Cancelled</a>&ndash;&gt;-->
+<!--      </nav>-->
+
+  </div>
+</div>
+</div>

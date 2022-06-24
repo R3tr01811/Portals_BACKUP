@@ -1,0 +1,89 @@
+<div class="app-wrapper">
+  <div class="app-content pt-3 p-md-3 p-lg-4">
+    <div class="container-xl">
+      <div class="row g-3 mb-4 align-items-center justify-content-between">
+        <div class="col-auto">
+          <h1 class="app-page-title mb-0">Sale orders</h1>
+        </div>
+        <div class="col-auto">
+          <div class="page-utilities">
+            <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+              <div class="col-auto">
+                <form class="table-search-form row gx-1 align-items-center">
+                  <div class="col-auto">
+                    <input type="text" id="search-orders" name="searchorders" class="form-control search-orders"
+                           placeholder="Search" [(ngModel)]="term">
+                  </div>
+                </form>
+
+              </div><!--//col-->
+              <div class="col-auto">
+
+<!--                <select class="form-select w-auto">-->
+<!--                  <option selected value="option-1">All</option>-->
+<!--                  <option value="option-2">This week</option>-->
+<!--                  <option value="option-3">This month</option>-->
+<!--                  <option value="option-4">Last 3 months</option>-->
+<!--                </select>-->
+
+              </div>
+            </div><!--//row-->
+          </div><!--//table-utilities-->
+        </div><!--//col-auto-->
+      </div><!--//row-->
+
+
+      <div class="tab-content" id="orders-table-tab-content">
+        <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+          <div class="app-card app-card-orders-table shadow-sm mb-5">
+            <div class="app-card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover mb-0 text-left">
+                  <thead class="table-dark">
+                  <tr>
+                    <th class="cell cel">Order no.</th>
+                    <th class="cell cel">Description</th>
+                    <th class="cell cel">Creation date/time</th>
+                    <th class="cell cel">Currency</th>
+                    <th class="cell cel">Net Price</th>
+                    <th class="cell cel">Net Value</th>
+                    <th class="cell cel">Exchange rate</th>
+                    <th class="cell cel">Material</th>
+                    <th class="cell cel">Valid from</th>
+                    <th class="cell cel">Valid to</th>
+                    <th class="cell cel">Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+<!--                    <td class="cell">#15341</td>-->
+<!--                    <td class="cell"><span class="truncate">Morbi vulputate lacinia neque et sollicitudin</span></td>-->
+<!--                    <td class="cell">Raymond Atkins</td>-->
+<!--                    <td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>-->
+<!--                    <td class="cell"><span class="badge bg-success">Paid</span></td>-->
+<!--                    <td class="cell">$678.26</td>-->
+                  </tr>
+                  <tr *ngFor="let user of list | filter:term">
+                    <td class="cell">{{ user.SD_DOC }}</td>
+                    <td class="cell"><span class="truncate">{{user.SHORT_TEXT }}</span></td>
+                    <td class="cell"><span class="cell-data">{{user.CREATION_DATE}}</span><span class="note">{{user.CREATION_TIME}}</span></td>
+                    <td class="cell">{{ user.CURRENCY }}</td>
+                    <td class="cell">{{ user.NET_PRICE }}</td>
+                    <td class="cell">{{ user.NET_VALUE }}</td>
+                    <td class="cell">{{ user.EXCHG_RATE }}</td>
+                    <td class="cell">{{ user.MATERIAL }}</td>
+                    <td class="cell">{{ user.VALID_FROM }}</td>
+                    <td class="cell">{{ user.VALID_TO }}</td>
+                    <td class="cell"><h6><span [ngClass]="{'bg-success':isCompleted(user.DOC_STATUS)}" class="badge">{{ user.DOC_STATUS }}</span></h6></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div><!--//table-responsive-->
+
+            </div><!--//app-card-body-->
+          </div><!--//app-card-->
+        </div><!--//tab-pane-->
+      </div>
+    </div>
+  </div>
+</div>

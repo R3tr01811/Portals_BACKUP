@@ -1,0 +1,150 @@
+<div class="container body">
+  <div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="card">
+        <div class="card-body p-0">
+          <div class="row gutters">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <div class="custom-actions-btns mb-2 mt-3">
+                <a class="btn btn-primary" (click)="pdf()">
+                  <i class="icon-download"></i> Download
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="invoice-container" id="content" #content>
+            <div class="invoice-header">
+              <!-- Row start -->
+              <!-- Row end -->
+              <!-- Row start -->
+              <div class="row gutters">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                  <h1>Invoice</h1>
+                </div>
+                <!--                <div class="col-lg-6 col-md-6 col-sm-6">-->
+                <!--                  <address class="text-right">-->
+                <!--                    Maxwell admin Inc, 45 NorthWest Street.<br>-->
+                <!--                    Sunrise Blvd, San Francisco.<br>-->
+                <!--                    00000 00000-->
+                <!--                  </address>-->
+                <!--                </div>-->
+              </div>
+              <!-- Row end -->
+              <!-- Row start -->
+              <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                  <div class="invoice-details">
+                    <address>
+                      <strong>{{user.NAME1}} {{user.NAME2}}</strong><br>
+                      {{user.STRAS}},{{user.ORT01}},<br>
+                      {{user.PSTLZ}}, {{user.REGIO}}
+                    </address>
+                  </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                  <div class="invoice-details">
+                    <div class="row">
+                      <div class="col-md-4 col-sm-12">
+                        <div class="invoice-num">
+                          <div><strong>Doc. no:</strong>{{list_h.VBELN}}</div>
+                          <div><strong>Bill date:</strong>{{list_h.FKDAT}}</div>
+                          <div><strong>Fiscal year:</strong>{{list_h.GJAHR}}</div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-12">
+                        <div class="invoice-num">
+                          <div><strong>Created on:</strong>{{list_h.ERDAT}}</div>
+                          <div><strong>Created time:</strong>{{list_h.ERZET}}</div>
+                          <div><strong>Posting period:</strong>{{list_h.POPER}}</div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-12">
+                        <div class="invoice-num">
+                          <div><strong>PO Num:</strong>{{list_h.BSTNK_VF}}</div>
+                          <div><strong>Ref.doc:</strong>{{list_h.XBLNR}}</div>
+                          <div><strong>Payment ref:</strong> {{list_h.KIDNO}}</div>
+                          <div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Row end -->
+            </div>
+            <div class="border-top my-3"></div>
+            <div class="invoice-body">
+              <!-- Row start -->
+              <div class="row gutters">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid">
+                      <h4>Product details</h4>
+                    </div>
+                  </nav>
+                  <div class="table-responsive">
+                    <table class="table custom-table m-0">
+                      <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Item no.</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Net weight</th>
+                        <th>Currency</th>
+                        <th>Cost</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>{{list_i.POSNR}}</td>
+                        <td>
+                          {{list_i.ARKTX}}
+                          <p class="m-0 text-muted">
+                            Material no. {{list_i.MATNR}}
+                          </p>
+                        </td>
+                        <td>{{list_i.FKIMG}}</td>
+                        <td>{{list_i.NTGEW}}</td>
+                        <td>{{list_h.WAERK}}</td>
+                        <td>{{list_i.WAVWR}}</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td colspan="2">
+                          <p>
+                            Subtotal<br>
+                            Tax<br>
+                          </p>
+                          <h5 class="text-success"><strong>Grand Total</strong></h5>
+                        </td>
+                        <td>
+                          <p>
+                            {{list_i.KZWI3}} {{list_h.WAERK}}<br>
+                            {{list_i.MWSBP}} {{list_h.WAERK}}<br>
+                          </p>
+                          <h5 class="text-success"><strong>{{toInt(list_i.KZWI3,list_i.MWSBP)}} {{list_h.WAERK}}</strong></h5>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- Row end -->
+            </div>
+            <div class="invoice-footer">
+              Thank you for your Business.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
