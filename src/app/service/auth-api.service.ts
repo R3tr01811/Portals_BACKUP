@@ -15,8 +15,8 @@ export class AuthAPIService {
 
   userDetails:any;
 
-  login(usrname: string, password: string): Observable<boolean> {
-    return this.http.post<{ token: string , userDetails:any }>('http://localhost:3000/auth', {user: usrname, pass: password})
+  login_customer(usrname: string, password: string): Observable<boolean> {
+    return this.http.post<{ token: string , userDetails:any }>('http://localhost:3000/auth_customer', {user: usrname, pass: password})
       .pipe(
         map(result => {
           localStorage.removeItem('access_token');
@@ -28,6 +28,22 @@ export class AuthAPIService {
         })
       );
   }
+
+
+  login_vendor(usrname: string, password: string): Observable<boolean> {
+    return this.http.post<{ token: string , userDetails:any }>('http://localhost:3000/auth_vendor', {user: usrname, pass: password})
+      .pipe(
+        map(result => {
+          localStorage.removeItem('access_token');
+          localStorage.setItem('access_token', result.token);
+          console.log(result.token);
+          localStorage.setItem('userDetails',JSON.stringify(result.userDetails));
+          //console.log(this.userDetails);
+          return true;
+        })
+      );
+  }
+
 
   logout() {
     localStorage.removeItem('access_token');
@@ -47,7 +63,6 @@ export class AuthAPIService {
   }
 
   //Customer Portal APIs
-
   saleOrd(){
     return this.http.get('http://localhost:3000/customer/sale_order');
   }
@@ -71,5 +86,27 @@ export class AuthAPIService {
   Invoice(){
     return this.http.get('http://localhost:3000/customer/invoice');
   }
+
+  //Vendor Portal
+  Invoice_vendor(){
+    return this.http.get('http://localhost:3000/vendor/invoice');
+  }
+
+  Credit_vendor(){
+    return this.http.get('http://localhost:3000/vendor/credebit');
+  }
+
+  Goodsrept_vendor(){
+    return this.http.get('http://localhost:3000/vendor/goodsrept');
+  }
+
+  Po_vendor(){
+    return this.http.get('http://localhost:3000/vendor/po');
+  }
+
+  Payment_vendor(){
+    return this.http.get('http://localhost:3000/vendor/payment');
+  }
+
 
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {SidebarComponent} from "../customer-portal/sidebar/sidebar.component";
 import {HomeComponent} from "./home/home.component";
 import {AccountComponent} from "./account/account.component";
 import {CreditDebitComponent} from "./credit-debit/credit-debit.component";
@@ -10,6 +9,14 @@ import {PoComponent} from "./po/po.component";
 import {RfqComponent} from "./rfq/rfq.component";
 import {GoodsReceiptComponent} from "./goods-receipt/goods-receipt.component";
 import {InvoiceDetComponent} from "./invoice-det/invoice-det.component";
+import {SidebarComponent} from "./sidebar/sidebar.component";
+import {CreditDebitResolveService} from "./credit-debit/credit-debit-resolve.service";
+import {InvoiceResolveService} from "./invoice/invoice-resolve.service";
+import {PaymentResolveService} from "./payment/payment-resolve.service";
+import {PoResolveService} from "./po/po-resolve.service";
+import {RfqResolveService} from "./rfq/rfq-resolve.service";
+import {GoodsReceiptResolveService} from "./goods-receipt/goods-receipt-resolve.service";
+import {PaymentInitComponent} from "./payment-init/payment-init.component";
 
 const routes: Routes = [
   {
@@ -25,28 +32,38 @@ const routes: Routes = [
         component:AccountComponent
       },
       {
-        path:'credit-debit',
-        component:CreditDebitComponent
+        path:'credit_debit',
+        component:CreditDebitComponent,
+        resolve:{ credebit:CreditDebitResolveService }
       },
       {
         path:'invoice',
-        component:InvoiceComponent
+        component:InvoiceComponent,
+        resolve:{ invoice:InvoiceResolveService }
       },
       {
         path:'payment',
-        component:PaymentComponent
+        component:PaymentComponent,
+        resolve:{ payment:PaymentResolveService }
+      },
+      {
+        path:'payment_init',
+        component:PaymentInitComponent
       },
       {
         path:'po',
-        component:PoComponent
+        component:PoComponent,
+        resolve:{ po: PoResolveService }
       },
       {
         path:'rfq',
-        component:RfqComponent
+        component:RfqComponent,
+        resolve:{ rfq:RfqResolveService }
       },
       {
-        path:'goods-receipt',
-        component:GoodsReceiptComponent
+        path:'goods_receipt',
+        component:GoodsReceiptComponent,
+        resolve:{ goods:GoodsReceiptResolveService }
       },
     ]
   },

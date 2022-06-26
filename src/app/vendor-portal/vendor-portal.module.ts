@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { VendorPortalRoutingModule } from './vendor-portal-routing.module';
 import { CreditDebitComponent } from './credit-debit/credit-debit.component';
 import { RfqComponent } from './rfq/rfq.component';
@@ -12,6 +11,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
 import { AccountComponent } from './account/account.component';
 import { InvoiceDetComponent } from './invoice-det/invoice-det.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { PaymentInitComponent } from './payment-init/payment-init.component';
 
 
 @NgModule({
@@ -25,11 +26,13 @@ import { InvoiceDetComponent } from './invoice-det/invoice-det.component';
     SidebarComponent,
     HomeComponent,
     AccountComponent,
-    InvoiceDetComponent
+    InvoiceDetComponent,
+    PaymentInitComponent
   ],
-  imports: [
-    CommonModule,
-    VendorPortalRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        VendorPortalRoutingModule,
+        MatProgressBarModule
+    ]
 })
 export class VendorPortalModule { }

@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
 
     if (this.api.loggedIn) {
       this.router.navigate(['/portal']);
-  }
+    }
 }
 
   get f() { return this.form.controls; }
@@ -51,7 +51,7 @@ export class AuthComponent implements OnInit {
     }
 
     if(this.user === "customer"){
-      this.api.login(val.usrname, val.password)
+      this.api.login_customer(val.usrname, val.password)
         .subscribe({
           next: (v) => {
             console.log(v)
@@ -76,7 +76,32 @@ export class AuthComponent implements OnInit {
           }
         });
     }
-    else if(this.user === "vendor" ){}
+    else if(this.user === "vendor" ){
+      this.api.login_vendor(val.usrname, val.password)
+        .subscribe({
+          next: (v) => {
+            console.log(v)
+          },
+          error: (e) => {
+            this.flag=false;
+            if (e.status==401){
+              this.err = "Check email and password"
+            }
+            else if(e.status==500){
+              this.err = "Internal Server Error"
+            }
+            else{
+              this.err = "Something Went Wrong ;(("
+            }
+            console.error(e)
+          },
+          complete: () => {
+            this.flag=true;
+            this.router.navigate(['../vendor/home']);
+            console.info('Login() Completed.');
+          }
+        });
+    }
     else if(this.user === "employee" ){}
 
   }
